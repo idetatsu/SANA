@@ -246,10 +246,10 @@ void Graph::loadFromEdgeListFile(string fin, string graphName, Graph& g, bool no
         node2s = edges[i][1];
 
         // Detects self-looping edges.
-        if(node1s == node2s) {
-            errorMsg << "self-loops not allowed in file '" << fin << "' node " << node1s << '\n';
-            throw runtime_error(errorMsg.str().c_str());
-        }
+        //if(node1s == node2s) {
+        //    errorMsg << "self-loops not allowed in file '" << fin << "' node " << node1s << '\n';
+        //    throw runtime_error(errorMsg.str().c_str());
+        //}
 
         // Detects duplicate edges.
         unordered_map<string, uint> *adjTo1;
@@ -303,10 +303,10 @@ void Graph::loadFromEdgeListFile(string fin, string graphName, Graph& g, bool no
             throw runtime_error(errorMsg.str().c_str());
         }
 
-        if(node1 == node2) {
-          errorMsg << "self-loops not allowed, node number " << node1 << '\n';
-          throw runtime_error(errorMsg.str().c_str());
-        }
+        //if(node1 == node2) {
+        //  errorMsg << "self-loops not allowed, node number " << node1 << '\n';
+        //  throw runtime_error(errorMsg.str().c_str());
+        //}
 
         // Note that when WEIGHTED is on, the adjacency matrix contains full integers, not just bits.
         #ifdef WEIGHTED
@@ -403,10 +403,10 @@ void Graph::edgeList2gw(string fin, string fout) {
 #endif
         string node1 = edges[i][0];
         string node2 = edges[i][1];
-    if(node1 == node2) {
-        errorMsg << "self-loops not allowed in file '" << fin << "' node " << node1 << '\n';
-        throw runtime_error(errorMsg.str().c_str());
-    }
+        //if(node1 == node2) {
+        //    errorMsg << "self-loops not allowed in file '" << fin << "' node " << node1 << '\n';
+        //    throw runtime_error(errorMsg.str().c_str());
+        //}
         uint index1 = nodeName2IndexMap[node1];
         uint index2 = nodeName2IndexMap[node2];
         edgeList[i][0] = index1;
@@ -623,10 +623,10 @@ void Graph::loadGwFile(const string& fileName) {
 	    //errorMsg << "In graph [" << graphName << "]: duplicate edges not allowed (in either direction), node names are " << nodeName2IndexMap[node1+1] << " " << nodeName2IndexMap[node2+1] << '\n';
             throw runtime_error(errorMsg.str().c_str());
         }
-        if(node1 == node2) {
-            errorMsg << "self-loops not allowed, node number " << node1+1 << '\n';
-            throw runtime_error(errorMsg.str().c_str());
-        }
+        //if(node1 == node2) {
+        //    errorMsg << "self-loops not allowed, node number " << node1+1 << '\n';
+        //    throw runtime_error(errorMsg.str().c_str());
+        //}
         edgeList[i][0] = node1;
         edgeList[i][1] = node2;
 
